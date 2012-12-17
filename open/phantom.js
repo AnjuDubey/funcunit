@@ -1,13 +1,13 @@
-var phantom = require('phantom');
+var phantom = require('node-phantom');
 
 var url = process.argv[2];
 url += '?steal[browser]=phantomjs&steal[startFiles]=funcunit/node/client.js';
 
 console.log(url);
 
-phantom.create(function(ph){
-	ph.createPage(function(page){
-		page.set('onConsoleMessage', function(msg, line, file){
+phantom.create(function(err, ph){
+	ph.createPage(function(err, page){
+		page.onConsoleMessage = function(msg, line, file){
 			if(msg && msg.indexOf('__EVT' === 0)){
 				try{
 					var evt = JSON.parse(msg.substring(5));
@@ -21,7 +21,7 @@ phantom.create(function(ph){
 			} else {
 				// console.log(msg);
 			}
-		});
+		};
 		page.open(url, function(){
 			// console.log('!!!!!!!!!!!!!!!!!!!!!!');
 		});
