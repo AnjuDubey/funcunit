@@ -1,7 +1,7 @@
 
 module("autosuggest",{
 	setup: function() {
-		S.open('/javascriptmvc/funcunit/build/test/autocomplete.html');
+		S.open('autocomplete.html');
 	}
 });
 
