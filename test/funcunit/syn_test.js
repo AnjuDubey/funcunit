@@ -14,14 +14,14 @@ test("Type and slow Click", function(){
 test("ctrl test", function(){
 	S.open("//funcunit/test/myapp.html");
 	S("#typehere").type("abc[ctrl]ac[ctrl-up]", function(){
-		equals(S("#typehere").val(), "abc");
+		equal(S("#typehere").val(), "abc");
 	})
 })
 
 test("clipboard", function(){
 	S.open("//funcunit/test/myapp.html");
 	S("#typehere").type("abc[ctrl]ac[ctrl-up][right][ctrl]v[ctrl-up]", function(){
-		equals(S("#typehere").val(), "abcabc");
+		equal(S("#typehere").val(), "abcabc");
 	})
 })
 

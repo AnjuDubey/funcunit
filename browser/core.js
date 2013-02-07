@@ -1,10 +1,6 @@
-steal('jquery', './init', function(jQuery, oldFuncUnit) {
-	
-	if(!window.QUnit && !window.jasmine){
-		steal('funcunit/qunit')
-	}
+steal('jquery', './init', function(jQuery) {
 
-	var FuncUnit = oldFuncUnit.jQuery.sub();
+	var FuncUnit = jQuery.sub();
 	var origFuncUnit = FuncUnit;
 	// override the subbed init method
 	// context can be an object with frame and forceSync:
@@ -82,7 +78,7 @@ steal('jquery', './init', function(jQuery, oldFuncUnit) {
 			return obj;
 		}
 	
-	oldFuncUnit.jQuery.extend(FuncUnit, oldFuncUnit, origFuncUnit)
+	jQuery.extend(FuncUnit, origFuncUnit)
 	FuncUnit.prototype = origFuncUnit.prototype;
 	return FuncUnit;
 })()
