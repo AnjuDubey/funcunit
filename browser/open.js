@@ -213,7 +213,7 @@ $.extend(FuncUnit,{
 		if ( /^\/\//.test(path) ){
 			path = path.substr(2);
 		}
-		return steal.config().root.join(path)+''
+		return window.steal? steal.config().root.join(path)+'': path;
 	},
 	/**
 	 * @attribute win
